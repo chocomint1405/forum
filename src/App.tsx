@@ -58,7 +58,7 @@ const LoginModal = ({ isOpen, onClose, type, onSwitch }: { isOpen: boolean, onCl
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary/60">Forum</span>
               </div>
               <h2 className="text-2xl font-bold text-on-surface mb-2">
-                {type === 'login' ? 'Welcome Back' : 'Join the Community'}
+                {type === 'login' ? 'Welcome Back' : 'Join the Expert and Member Directory'}
               </h2>
               <p className="text-slate-500 text-sm">
                 {type === 'login' 
@@ -147,7 +147,7 @@ const PostCard = ({ author, role, time, title, content, tags, replies, views, on
         alt={author} 
         onClick={() => onAuthorClick?.(author)}
         className="w-10 h-10 rounded-full object-cover cursor-pointer hover:opacity-80 transition-opacity" 
-        src={`https://picsum.photos/seed/${author}/100/100`}
+        src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${author}`}
         referrerPolicy="no-referrer"
       />
       <div className="flex-1">
@@ -237,7 +237,7 @@ const ReplyItem = ({ author, role, time, content, votes: initialVotes, onAuthorC
         alt={author} 
         onClick={() => onAuthorClick?.(author)}
         className="w-8 h-8 rounded-full object-cover mt-1 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity" 
-        src={`https://picsum.photos/seed/${author}/80/80`}
+        src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${author}`}
         referrerPolicy="no-referrer"
       />
       <div className="flex-1">
@@ -273,7 +273,7 @@ const ThreadView = ({ post, onBack, onAuthorClick }: { post: any, onBack: () => 
     if (!replyText.trim()) return;
     
     const newReply = {
-      author: "Dr. Julian Kovic",
+      author: "Dr. abc",
       role: "EXPERT",
       time: "Just now",
       content: replyText,
@@ -304,7 +304,7 @@ const ThreadView = ({ post, onBack, onAuthorClick }: { post: any, onBack: () => 
               alt={post.author} 
               onClick={() => onAuthorClick?.(post.author)}
               className="w-12 h-12 rounded-full object-cover border-2 border-primary/5 cursor-pointer hover:opacity-80 transition-opacity" 
-              src={`https://picsum.photos/seed/${post.author}/120/120`}
+              src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${post.author}`}
               referrerPolicy="no-referrer"
             />
             <div>
@@ -377,9 +377,9 @@ const ThreadView = ({ post, onBack, onAuthorClick }: { post: any, onBack: () => 
             <div className="flex gap-4">
               <img 
                 alt="Current User" 
-                onClick={() => onAuthorClick?.("Dr. Julian Kovic")}
+                onClick={() => onAuthorClick?.("Dr. abc")}
                 className="w-10 h-10 rounded-full object-cover border-2 border-primary/10 cursor-pointer hover:opacity-80 transition-opacity" 
-                src="https://picsum.photos/seed/Julian/100/100"
+                src={`https://api.dicebear.com/7.x/adventurer/svg?seed=Dr. abc`}
                 referrerPolicy="no-referrer"
               />
               <div className="flex-1">
@@ -423,7 +423,7 @@ const MemberCard = ({ name, role, bio, specialty, onClick }: any) => (
     <img 
       alt={name} 
       className="w-20 h-20 rounded-full object-cover border-2 border-primary/10" 
-      src={`https://picsum.photos/seed/${name}/200/200`}
+      src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${name}`}
       referrerPolicy="no-referrer"
     />
     <div className="flex-1">
@@ -455,11 +455,11 @@ export default function App() {
   const [authModal, setAuthModal] = React.useState<{ isOpen: boolean, type: 'login' | 'signup' }>({ isOpen: false, type: 'login' });
 
   const currentUser = {
-    name: "Dr. Julian Kovic",
+    name: "Dr. abc",
     role: "EXPERT",
     specialty: "Cardiovascular Imaging",
     bio: "Specializing in myocardial perfusion imaging and stress testing. Dedicated to improving diagnostic accuracy in cardiac nuclear medicine.",
-    email: "j.kovic@nucleus.edu",
+    email: "dr.abc@nucleus.edu",
     joined: "January 2024",
     stats: {
       posts: 42,
@@ -470,56 +470,56 @@ export default function App() {
 
   const members = [
     { 
-      name: "Dr. Aris Thorne", 
+      name: "Dr. deg", 
       role: "EXPERT", 
       specialty: "Nuclear Oncology", 
       bio: "Leading researcher in PET/CT tracers for early-stage detection.",
-      email: "a.thorne@nucleus.edu",
+      email: "dr.deg@nucleus.edu",
       joined: "March 2022",
       stats: { posts: 128, replies: 450, views: "45.2k" }
     },
     { 
-      name: "Sarah Jenkins", 
+      name: "ghi", 
       role: "USER", 
       specialty: "Radiology Resident", 
       bio: "Passionate about patient safety and radiation dose optimization.",
-      email: "s.jenkins@hospital.org",
+      email: "ghi@hospital.org",
       joined: "November 2023",
       stats: { posts: 15, replies: 89, views: "3.1k" }
     },
     { 
-      name: "Prof. Elena Vance", 
+      name: "MSc. jkl", 
       role: "EXPERT", 
       specialty: "Isotope Synthesis", 
       bio: "20 years of experience in cyclotron operations and radiochemistry.",
-      email: "e.vance@university.edu",
+      email: "msc.jkl@university.edu",
       joined: "June 2021",
       stats: { posts: 85, replies: 312, views: "28.9k" }
     },
     { 
-      name: "Marcus Wright", 
+      name: "mno", 
       role: "USER", 
       specialty: "Medical Physicist", 
       bio: "Focusing on AI-driven radiotherapy planning and quality assurance.",
-      email: "m.wright@clinic.net",
+      email: "mno@clinic.net",
       joined: "September 2023",
       stats: { posts: 22, replies: 145, views: "5.4k" }
     },
     { 
-      name: "Dr. Julian Kovic", 
+      name: "Dr. abc", 
       role: "EXPERT", 
       specialty: "Cardiovascular Imaging", 
       bio: "Specializing in myocardial perfusion imaging and stress testing.",
-      email: "j.kovic@nucleus.edu",
+      email: "dr.abc@nucleus.edu",
       joined: "January 2024",
       stats: { posts: 42, replies: 156, views: "12.4k" }
     },
     { 
-      name: "RadAI Lab", 
+      name: "Dr. pqr", 
       role: "EXPERT", 
       specialty: "AI Research Group", 
       bio: "Collaborative research group focused on machine learning in radiology.",
-      email: "contact@radai.lab",
+      email: "dr.pqr@radai.lab",
       joined: "August 2022",
       stats: { posts: 210, replies: 12, views: "105k" }
     },
@@ -537,7 +537,7 @@ export default function App() {
   const posts = [
     {
       id: 1,
-      author: "Dr. Aris Thorne",
+      author: "Dr. deg",
       role: "EXPERT",
       time: "5m ago",
       title: "How PET/CT improves cancer diagnosis",
@@ -547,14 +547,14 @@ export default function App() {
       replies: 12,
       views: 250,
       mockReplies: [
-        { author: "Marcus Wright", role: "USER", time: "2m ago", content: "Great insights! How do you see the integration of AI affecting these diagnostic accuracy rates in the next 5 years?", votes: 15 },
-        { author: "Prof. Elena Vance", role: "EXPERT", time: "1m ago", content: "The tracer development is indeed the bottleneck. We are working on some novel F-18 labeled compounds that might interest you.", votes: 32 },
-        { author: "Sarah Jenkins", role: "USER", time: "30s ago", content: "I've seen some of these new tracers in our clinic recently. The clarity is astounding compared to what we had just two years ago.", votes: 8 }
+        { author: "mno", role: "USER", time: "2m ago", content: "Great insights! How do you see the integration of AI affecting these diagnostic accuracy rates in the next 5 years?", votes: 15 },
+        { author: "MSc. jkl", role: "EXPERT", time: "1m ago", content: "The tracer development is indeed the bottleneck. We are working on some novel F-18 labeled compounds that might interest you.", votes: 32 },
+        { author: "ghi", role: "USER", time: "30s ago", content: "I've seen some of these new tracers in our clinic recently. The clarity is astounding compared to what we had just two years ago.", votes: 8 }
       ]
     },
     {
       id: 2,
-      author: "Sarah Jenkins",
+      author: "ghi",
       role: "USER",
       time: "20m ago",
       title: "Understanding radiation dose in therapy",
@@ -564,13 +564,13 @@ export default function App() {
       replies: 8,
       views: 180,
       mockReplies: [
-        { author: "Dr. Julian Kovic", role: "EXPERT", time: "10m ago", content: "Excellent summary, Sarah. Patient education is half the battle in nuclear medicine. Understanding the ALARA principle is fundamental.", votes: 45 },
-        { author: "Marcus Wright", role: "USER", time: "5m ago", content: "Could you elaborate more on the software used for these simulations? Is it mostly Monte Carlo based?", votes: 12 }
+        { author: "Dr. abc", role: "EXPERT", time: "10m ago", content: "Excellent summary, ghi. Patient education is half the battle in nuclear medicine. Understanding the ALARA principle is fundamental.", votes: 45 },
+        { author: "mno", role: "USER", time: "5m ago", content: "Could you elaborate more on the software used for these simulations? Is it mostly Monte Carlo based?", votes: 12 }
       ]
     },
     {
       id: 3,
-      author: "RadAI Lab",
+      author: "Dr. pqr",
       role: "EXPERT",
       time: "1h ago",
       title: "Applications of AI in radiotherapy planning",
@@ -580,8 +580,8 @@ export default function App() {
       replies: 24,
       views: 540,
       mockReplies: [
-        { author: "Dr. Aris Thorne", role: "EXPERT", time: "30m ago", content: "The sub-millimeter precision is impressive. Have you tested this on moving targets like liver lesions? Respiratory gating is usually the biggest challenge there.", votes: 28 },
-        { author: "Prof. Elena Vance", role: "EXPERT", time: "15m ago", content: "We've been looking for a partner to test AI-driven isotope selection. Your segmentation model could be the perfect front-end for that.", votes: 19 }
+        { author: "Dr. deg", role: "EXPERT", time: "30m ago", content: "The sub-millimeter precision is impressive. Have you tested this on moving targets like liver lesions? Respiratory gating is usually the biggest challenge there.", votes: 28 },
+        { author: "MSc. jkl", role: "EXPERT", time: "15m ago", content: "We've been looking for a partner to test AI-driven isotope selection. Your segmentation model could be the perfect front-end for that.", votes: 19 }
       ]
     }
   ];
@@ -641,7 +641,7 @@ export default function App() {
         <aside className="h-[calc(100vh-64px)] w-64 fixed left-0 top-16 pt-8 bg-surface border-r border-outline-variant/15 overflow-y-auto hidden md:block">
           <div className="px-6 mb-8">
             <h1 className="font-headline text-2xl font-bold text-primary leading-tight">
-              {view === 'feed' ? 'Community Feed' : view === 'community' ? 'Our Community' : view === 'thread' ? 'Discussion' : 'My Profile'}
+              {view === 'feed' ? 'Community Feed' : view === 'community' ? 'Expert and Member Directory' : view === 'thread' ? 'Discussion' : 'My Profile'}
             </h1>
           </div>
           
@@ -660,7 +660,7 @@ export default function App() {
             />
             <SidebarItem 
               icon={Users} 
-              label="Community" 
+              label="Expert and Member Directory" 
               active={view === 'community'} 
               onClick={() => { setView('community'); setSelectedUserProfile(null); setSelectedThread(null); }}
             />
@@ -681,9 +681,9 @@ export default function App() {
 
         {/* Main Content */}
         <main className="flex-1 md:ml-64 p-6 lg:p-12">
-          <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-12">
+          <div className="max-w-3xl mx-auto">
             
-            {/* Feed or Community or Profile or Thread View */}
+            {/* Feed or Expert and Member Directory or Profile or Thread View */}
             <div className="flex-1">
               {view === 'feed' ? (
                 <>
@@ -693,7 +693,7 @@ export default function App() {
                       alt="User Avatar" 
                       onClick={() => handleAuthorClick(currentUser.name)}
                       className="w-10 h-10 rounded-full object-cover flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity" 
-                      src={`https://picsum.photos/seed/${currentUser.name}/100/100`}
+                      src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${currentUser.name}`}
                       referrerPolicy="no-referrer"
                     />
                     <div className="flex-1 bg-surface-container-high rounded-full px-5 py-2.5 flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
@@ -756,7 +756,7 @@ export default function App() {
                       <img 
                         alt={profileToDisplay.name} 
                         className="w-32 h-32 rounded-full object-cover border-4 border-primary/10 shadow-lg" 
-                        src={`https://picsum.photos/seed/${profileToDisplay.name}/300/300`}
+                        src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${profileToDisplay.name}`}
                         referrerPolicy="no-referrer"
                       />
                       <div className="flex-1 text-center md:text-left">
@@ -798,39 +798,6 @@ export default function App() {
                 </motion.div>
               )}
             </div>
-
-            {/* Right Sidebar */}
-            <aside className="hidden lg:block w-80 shrink-0">
-              <div className="sticky top-24 space-y-8">
-                {/* Mission Card */}
-                <div className="nuclear-glow rounded-xl p-6 text-white shadow-lg overflow-hidden relative">
-                  <div className="relative z-10">
-                    <h3 className="font-headline text-2xl font-bold mb-3">Our Mission</h3>
-                    <p className="text-sm text-blue-100 leading-relaxed">
-                      NucleUS is dedicated to advancing nuclear medicine awareness through academic discussion, patient education, and clinical research sharing.
-                    </p>
-                    <button className="mt-6 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all">
-                      Learn More <ChevronRight size={14} />
-                    </button>
-                  </div>
-                  {/* Decorative element */}
-                  <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-                </div>
-
-                {/* Trending Topics Placeholder */}
-                <div className="bg-surface-container-low rounded-xl p-6">
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Trending Topics</h4>
-                  <ul className="space-y-4">
-                    {['New Isotope Tracers', 'Thyroid Treatment', 'Dosimetry Standards'].map(topic => (
-                      <li key={topic} className="group cursor-pointer">
-                        <p className="text-sm font-semibold group-hover:text-primary transition-colors">{topic}</p>
-                        <p className="text-[10px] text-slate-400">45 discussions this week</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </aside>
           </div>
         </main>
       </div>
