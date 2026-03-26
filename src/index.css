@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Newsreader", serif;
+  --font-body: "Inter", sans-serif;
+  
+  --color-primary: #00658b;
+  --color-primary-container: #2daae1;
+  --color-surface: #f8f9fa;
+  --color-surface-container: #edeeef;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #3e484f;
+  --color-outline-variant: #bdc8d0;
+  --color-secondary-container: #bfe5fe;
+  --color-on-secondary-container: #42677c;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body antialiased;
+  }
+}
+
+@layer components {
+  .nuclear-glow {
+    background: linear-gradient(135deg, #00658b 0%, #2daae1 100%);
+  }
+  
+  .clinical-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(24px);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap');
